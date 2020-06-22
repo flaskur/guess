@@ -13,7 +13,7 @@ interface StartGameScreenInterface {
 export default ({ startGameHandler }: StartGameScreenInterface) => {
 	const [ inputValue, setInputValue ] = useState('');
 	const [ confirmed, setConfirmed ] = useState(false);
-	const [ guessNumber, setGuessNumber ] = useState(0); // math.random() * 100 + 1?
+	const [ guessNumber, setGuessNumber ] = useState(0);
 
 	const inputChangeHandler = (inputText: string) => {
 		// validate first
@@ -46,6 +46,7 @@ export default ({ startGameHandler }: StartGameScreenInterface) => {
 	};
 
 	return (
+		// if you click outside the keyboard it is dismissed
 		<TouchableWithoutFeedback
 			onPress={() => {
 				Keyboard.dismiss();
@@ -57,7 +58,7 @@ export default ({ startGameHandler }: StartGameScreenInterface) => {
 				<Card style={styles.inputContainer}>
 					<Text>Select a Number</Text>
 
-					{/* how do i exit out of keyboard? */}
+					{/* notice value and onChangeText, no event.target.value */}
 					<Input
 						style={styles.input}
 						blurOnSubmit={true}
@@ -71,7 +72,7 @@ export default ({ startGameHandler }: StartGameScreenInterface) => {
 
 					<View style={styles.buttonContainer}>
 						<View style={styles.button}>
-							{/* you can set button color text directly */}
+							{/* you can't style button directly */}
 							<Button title="reset" onPress={resetPressHandler} color={Colors.primary} />
 						</View>
 						<View style={styles.button}>

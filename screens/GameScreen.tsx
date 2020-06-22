@@ -7,7 +7,7 @@ import MainButton from '../components/MainButton';
 
 type generateRandomFunc = (min: number, max: number, exclude: number) => number;
 
-// will not rerender
+// logic to determine computer guess
 const generateRandomBetween: generateRandomFunc = (min, max, exclude) => {
 	min = Math.ceil(min);
 	max = Math.floor(max);
@@ -54,7 +54,6 @@ export default ({ userChoice, gameOverHandler }: GameScreenInterface) => {
 		[ currentGuess, userChoice, gameOverHandler ]
 	);
 
-	// why inside component? rerender?
 	const nextGuessHandler = (direction: string) => {
 		if (
 			(direction === 'lower' && currentGuess < userChoice) ||
@@ -69,7 +68,6 @@ export default ({ userChoice, gameOverHandler }: GameScreenInterface) => {
 			return;
 		}
 
-		// get a new number
 		if (direction === 'lower') {
 			currentHigh.current = currentGuess;
 		}

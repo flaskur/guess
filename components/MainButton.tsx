@@ -7,6 +7,7 @@ interface MainButtonInterface {
 	children: any;
 }
 
+// might useful to make your own button using touchable opacity instead of default button
 export default ({ buttonPressHandler, children }: MainButtonInterface) => {
 	return (
 		<TouchableOpacity onPress={buttonPressHandler} activeOpacity={0.8}>
